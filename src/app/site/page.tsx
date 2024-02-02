@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import logo from "../../../public/pac-logo.png";
 export default function Home() {
   return (
     <>
@@ -10,7 +10,7 @@ export default function Home() {
         <div className="my-[3rem] block md:hidden"></div>
         <p className=" text-center">Customizable social media</p>
         <div className="bg-gradient-to-r from-primary to-secondary-foreground text-transparent bg-clip-text relative">
-          <h1 className="text-3xl md:text-9xl font-bold text-center md:text-[300px]">
+          <h1 className="text-3xl md:text-8xl font-bold text-center md:text-[300px]">
             Morphy
           </h1>
         </div>
@@ -22,7 +22,6 @@ export default function Home() {
             width={1200}
             className="rounded-tl-2xl rounded-tr-2xl border-2 border-muted"
           /> */}
-          <div className="bottom-0 top-[50%] bg-gradient-to-t dark:from-background left-0 right-0 absolute z-10"></div>
         </div>
       </section>
     </>
