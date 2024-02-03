@@ -9,3 +9,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String  @id @default(uuid())
+  name      String
+  email     String? @unique
+  avatarUrl String 
+  bio       String
+  username  String? @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Permissions  Permissions[]
+  // Ticket       Ticket[]
+  // Notification Notification[]
+
+  // @@index([agencyId])
+}
+

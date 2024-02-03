@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "../../../../public/pac-logo.png";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   user?: null | User;
@@ -26,12 +27,11 @@ const Navigation = ({ user }: Props) => {
       </nav>
       <aside className="flex gap-2 items-center">
         <Link
-          href={"/agency"}
+          href={"/"}
           className="bg-primary text-white p-2 px-4 rounded-xl hover:bg-primary/80"
         >
-          Login
+          Home
         </Link>
-        <UserButton />
         {/* <ModeToggle /> */}
       </aside>
     </div>
