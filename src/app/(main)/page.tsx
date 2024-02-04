@@ -1,9 +1,12 @@
-import React from 'react'
+import LeftSidebar from "@/components/global/Sidebar";
+import React from "react";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div className=" flex justify-between items-center w-full h-full">
+      <LeftSidebar />
+    </div>
+  );
+};
 
-export default page
+export default page;
