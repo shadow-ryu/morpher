@@ -14,15 +14,26 @@ model User {
   id        String  @id @default(uuid())
   name      String
   email     String? @unique
-  avatarUrl String 
+  avatarUrl String
   bio       String
   username  String? @unique
+
+  createdGuilds Guild[] @relation("CreatedBy")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  // Permissions  Permissions[]
-  // Ticket       Ticket[]
-  // Notification Notification[]
-
-  // @@index([agencyId])
 }
 
+model Guild {
+  id          String   @id @default(uuid())
+  name        String
+  guildHandle String?  @unique
+  guildLogo   String
+  info        String
+  tags        String?
+  ownerId     String
+  Creator     User?    @relation("CreatedBy", fields: [ownerId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([name])
+}
