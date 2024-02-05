@@ -2,7 +2,7 @@
 import * as z from "zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import defaultImg from "../../../public/assest/user-profile-preview.png";
@@ -19,9 +19,6 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 import { useUploadThing } from "@/lib/uploadthing";
-// import { isBase64Image } from "@/lib/utils";
-
-import { UserValidation } from "@/lib/validations/user";
 import {
   Card,
   CardContent,
@@ -30,16 +27,12 @@ import {
   CardTitle,
 } from "../ui/card";
 import { isBase64Image } from "@/lib/utils";
-import { initUser } from "@/lib/actions/user.action";
 import { toast } from "../ui/use-toast";
 import { GuildValidation } from "@/lib/validations/guild";
 import { initGuild } from "@/lib/actions/guild.action";
-// import { updateUser } from "@/lib/actions/user.actions";
-// import { register } from "module";
 
 const AccountProfile = ({ guild, ownerId }: any) => {
   const router = useRouter();
-  const pathname = usePathname();
   const { startUpload } = useUploadThing("media");
 
   const [files, setFiles] = useState<File[]>([]);
@@ -114,7 +107,7 @@ const AccountProfile = ({ guild, ownerId }: any) => {
       if (!file.type.includes("image")) return;
 
       fileReader.onload = async (event) => {
-        const imageDataUrl = event.target?.result?.toString() || "";
+        const imageDataUrl = event.target?.result?.toString() ?? "";
         fieldChange(imageDataUrl);
       };
 
@@ -240,6 +233,7 @@ const AccountProfile = ({ guild, ownerId }: any) => {
                     Guild Tags
                   </FormLabel>
                   <FormControl>
+                    {/* @ts-ignore */}
                     <Textarea
                       rows={10}
                       className="account-form_input  h-[3rem]  no-focus"

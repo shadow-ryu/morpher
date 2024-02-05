@@ -1,8 +1,6 @@
 "use server";
 
-import { clerkClient, currentUser } from "@clerk/nextjs";
-
-import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs";
 import { db } from "../db";
 import { Guild } from "@prisma/client";
 
