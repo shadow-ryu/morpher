@@ -83,7 +83,7 @@ const AccountProfile = ({ guild, ownerId }: any) => {
         title: "Guild created successfully",
         variant: "default",
       });
-      router.push(`/guilds/${guildData.id}`);
+      router.push(`/guilds/${guildData.id}/setup`);
     } else {
       toast({
         title: "Something went wrong. Plz try again",

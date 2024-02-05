@@ -11,29 +11,50 @@ datasource db {
 }
 
 model User {
-  id        String  @id @default(uuid())
-  name      String
-  email     String? @unique
-  avatarUrl String
-  bio       String
-  username  String? @unique
-
-  createdGuilds Guild[] @relation("CreatedBy")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String         @id @default(uuid())
+  name          String
+  email         String?        @unique
+  avatarUrl     String
+  bio           String
+  username      String?        @unique
+  subscriptions Subscription[]
+  createdGuilds Guild[]        @relation("CreatedBy")
+  followers     Follower[]     @relation(name: "UserFollowers")
+  following     Follower[]     @relation(name: "UserFollowing")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model Guild {
-  id          String   @id @default(uuid())
+  id          String         @id @default(uuid())
   name        String
-  guildHandle String?  @unique
+  guildHandle String?        @unique
   guildLogo   String
   info        String
   tags        String?
   ownerId     String
-  Creator     User?    @relation("CreatedBy", fields: [ownerId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  Creator     User?          @relation("CreatedBy", fields: [ownerId], references: [id])
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  subscribers Subscription[]
 
   @@index([name])
+}
+
+model Subscription {
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  guild   Guild  @relation(fields: [guildId], references: [id])
+  guildId String
+
+  @@id([userId, guildId])
+}
+
+model Follower {
+  user        User   @relation(name: "UserFollowers", fields: [userId], references: [id])
+  userId      String
+  follower    User   @relation(name: "UserFollowing", fields: [followingId], references: [id])
+  followingId String
+
+  @@id([userId, followingId])
 }
