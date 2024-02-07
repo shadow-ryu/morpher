@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     /* Name: custom color palette
@@ -9,7 +9,7 @@
        URL: https://gradient.page */
 
     /* CSS: .bg-gradient { background: var(--gradient) } */
-    --gradient: linear-gradient(to top left,#4b6cb7,#182848);
+    --gradient: linear-gradient(to top left, #4b6cb7, #182848);
 
     --background: 236 27.95% 4.08%;
     --foreground: 236 4.3% 97.55%;
@@ -40,4 +40,45 @@
 
     --ring: 236 43% 51%;
   }
+}
+/* Basic editor styles */
+.tiptap > * + * {
+  @apply mt-3; /* margin-top: 0.75em; */
+}
+
+.tiptap ul,
+.tiptap ol {
+  @apply px-4; /* padding: 0 1rem; */
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  @apply leading-tight; /* line-height: 1.1; */
+}
+
+
+
+.tiptap pre {
+  @apply bg-black text-current py-3 px-4 rounded-lg; /* background: #0D0D0D; color: #FFF; padding: 0.75rem 1rem; border-radius: 0.5rem; */
+}
+
+.tiptap pre code {
+  @apply text-white; /* color: inherit; */
+  @apply py-0 px-0 bg-none text-sm; /* padding: 0; background: none; font-size: 0.8rem; */
+}
+
+.tiptap img {
+  @apply max-w-full h-auto; /* max-width: 100%; height: auto; */
+}
+
+.tiptap blockquote {
+  @apply pl-4 border-l-2 border-gray-100; /* padding-left: 1rem; border-left: 2px solid rgba(#0D0D0D, 0.1); */
+}
+
+.tiptap hr {
+  @apply border-t-2 border-gray-100 my-8; /* border: none; border-top: 2px solid rgba(#0D0D0D, 0.1); margin: 2rem 0; */
 }
