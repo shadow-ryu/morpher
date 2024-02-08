@@ -6,9 +6,6 @@ const page = () => {
   return (
     <div className=" flex  justify-start gap-3 items-center w-full h-full">
       <LeftSidebar />
-      <div className=" bg-white text-black">
-        <Tiptap />
-      </div>
     </div>
   );
 };
